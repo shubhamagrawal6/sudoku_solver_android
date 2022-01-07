@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 
 public class SudokuBoard extends View {
     private final int boardColor;
+    private final int cellFillColor;
+    private final int cellsHighlightColor;
     private final Paint boardColorPaint = new Paint();
     private int cellSize;
 
@@ -22,6 +24,8 @@ public class SudokuBoard extends View {
 
         try{
             boardColor = a.getInteger(R.styleable.SudokuBoard_boardColor, 0);
+            cellFillColor = a.getInteger(R.styleable.SudokuBoard_cellFillColor, 0);
+            cellsHighlightColor = a.getInteger(R.styleable.SudokuBoard_cellsHighlightColor, 0);
         } finally {
             a.recycle();
         }
