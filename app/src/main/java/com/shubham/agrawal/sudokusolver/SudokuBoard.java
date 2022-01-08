@@ -13,7 +13,11 @@ public class SudokuBoard extends View {
     private final int boardColor;
     private final int cellFillColor;
     private final int cellsHighlightColor;
+
     private final Paint boardColorPaint = new Paint();
+    private final Paint cellFillColorPaint = new Paint();
+    private final Paint cellsHighlightColorPaint = new Paint();
+
     private int cellSize;
 
     public SudokuBoard(Context context, @Nullable AttributeSet attrs) {
@@ -52,6 +56,14 @@ public class SudokuBoard extends View {
         boardColorPaint.setStrokeWidth(16);
         boardColorPaint.setColor(boardColor);
         boardColorPaint.setAntiAlias(true);
+
+        cellFillColorPaint.setStyle(Paint.Style.FILL);
+        cellFillColorPaint.setAntiAlias(true);
+        cellFillColorPaint.setColor(cellFillColor);
+
+        cellsHighlightColorPaint.setStyle(Paint.Style.FILL);
+        cellsHighlightColorPaint.setAntiAlias(true);
+        cellsHighlightColorPaint.setColor(cellsHighlightColor);
 
         canvas.drawRect(0,0, getWidth(), getHeight(), boardColorPaint);
 
