@@ -15,6 +15,8 @@
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
         custom:layout_constraintTop_toTopOf="parent"
+        custom:cellFillColor="#6600DDFF"
+        custom:cellsHighlightColor="#2600DDFF"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content">
 
