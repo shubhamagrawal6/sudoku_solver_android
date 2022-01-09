@@ -24,7 +24,7 @@ public class Solver {
         emptyBoxIndex = new ArrayList<>();
     }
 
-    private void getEmptyBoxIndex(){
+    private void getEmptyBoxIndexes(){
         for (int r=0; r<9; r++){
             for (int c=0; c<9; c++){
                 if (this.board[r][c] == 0){
@@ -36,15 +36,19 @@ public class Solver {
         }
     }
 
-    private void setNumberPos(int num){
+    public void setNumberPos(int num){
         if (this.selected_row != -1 && this.selected_column != -1){
-            if (this.board[this.selected_row][this.selected_column] == num){
-                this.board[this.selected_row][this.selected_column] = 0;
+            if (this.board[this.selected_row-1][this.selected_column-1] == num){
+                this.board[this.selected_row-1][this.selected_column-1] = 0;
             }
             else{
-                this.board[this.selected_row][this.selected_column] = num;
+                this.board[this.selected_row-1][this.selected_column-1] = num;
             }
         }
+    }
+
+    public ArrayList<ArrayList<Object>> getEmptyBoxIndex(){
+        return this.emptyBoxIndex;
     }
 
     public int[][] getBoard() {
