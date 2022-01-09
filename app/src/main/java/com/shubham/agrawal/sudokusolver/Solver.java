@@ -1,29 +1,70 @@
 package com.shubham.agrawal.sudokusolver;
 
+import java.util.ArrayList;
+
 public class Solver {
 
-    private static int selected_row;
-    private static int selected_column;
+    int[][] board;
+    ArrayList<ArrayList<Object>> emptyBoxIndex;
+
+    int selected_row;
+    int selected_column;
 
     Solver(){
         selected_column = -1;
         selected_row = -1;
+        board = new int[9][9];
+
+        for (int r=0; r<9; r++){
+            for (int c=0; c<9; c++){
+                board[r][c] = 0;
+            }
+        }
+
+        emptyBoxIndex = new ArrayList<>();
+    }
+
+    private void getEmptyBoxIndex(){
+        for (int r=0; r<9; r++){
+            for (int c=0; c<9; c++){
+                if (this.board[r][c] == 0){
+                    this.emptyBoxIndex.add(new ArrayList<>());
+                    this.emptyBoxIndex.get(this.emptyBoxIndex.size() - 1).add(r);
+                    this.emptyBoxIndex.get(this.emptyBoxIndex.size() - 1).add(c);
+                }
+            }
+        }
+    }
+
+    private void setNumberPos(int num){
+        if (this.selected_row != -1 && this.selected_column != -1){
+            if (this.board[this.selected_row][this.selected_column] == num){
+                this.board[this.selected_row][this.selected_column] = 0;
+            }
+            else{
+                this.board[this.selected_row][this.selected_column] = num;
+            }
+        }
+    }
+
+    public int[][] getBoard() {
+        return this.board;
     }
 
     public int getSelectedRow() {
-        return selected_row;
+        return this.selected_row;
     }
 
     public int getSelectedColumn() {
-        return selected_column;
+        return this.selected_column;
     }
 
     public void setSelectedRow(int selected_row) {
-        Solver.selected_row = selected_row;
+        this.selected_row = selected_row;
     }
 
     public void setSelectedColumn(int selected_column) {
-        Solver.selected_column = selected_column;
+        this.selected_column = selected_column;
     }
 
 }

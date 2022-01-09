@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,12 +15,18 @@ public class SudokuBoard extends View {
     private final int boardColor;
     private final int cellFillColor;
     private final int cellsHighlightColor;
+    private final int letterColor;
+    private final int letterColorSolve;
 
     private final Paint boardColorPaint = new Paint();
     private final Paint cellFillColorPaint = new Paint();
     private final Paint cellsHighlightColorPaint = new Paint();
+    private final Paint letterPaint = new Paint();
+
+    private final Rect letterPaintBounds =  new Rect();
 
     private int cellSize;
+
     private final Solver solver = new Solver();
 
     public SudokuBoard(Context context, @Nullable AttributeSet attrs) {
@@ -32,6 +39,8 @@ public class SudokuBoard extends View {
             boardColor = a.getInteger(R.styleable.SudokuBoard_boardColor, 0);
             cellFillColor = a.getInteger(R.styleable.SudokuBoard_cellFillColor, 0);
             cellsHighlightColor = a.getInteger(R.styleable.SudokuBoard_cellsHighlightColor, 0);
+            letterColor = a.getInteger(R.styleable.SudokuBoard_letterColor, 0);
+            letterColorSolve = a.getInteger(R.styleable.SudokuBoard_letterColorSolve, 0);
         } finally {
             a.recycle();
         }
@@ -94,6 +103,17 @@ public class SudokuBoard extends View {
         }
 
         return isValid;
+    }
+
+    private void drawNumbers(Canvas canvas){
+        for (int r=0; r<9; r++) {
+            for (int c = 0; c < 9; c++) {
+                if (solver.getBoard()[r][c] != 0){
+                    String text = Integer.toString(solver.getBoard()[r][c]);
+                }
+
+            }
+        }
     }
 
     private void colorCell(Canvas canvas, int r, int c){
