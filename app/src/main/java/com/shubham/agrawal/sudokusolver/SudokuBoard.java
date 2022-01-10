@@ -1,5 +1,6 @@
 package com.shubham.agrawal.sudokusolver;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -91,6 +92,7 @@ public class SudokuBoard extends View {
         drawNumbers(canvas);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event){
         boolean isValid;

@@ -9,18 +9,20 @@
 
     <com.shubham.agrawal.sudokusolver.SudokuBoard
         android:id="@+id/SudokuBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         custom:boardColor="#000000"
+        custom:cellFillColor="#6600DDFF"
+        custom:cellsHighlightColor="#2600DDFF"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
         custom:layout_constraintTop_toTopOf="parent"
-        custom:cellFillColor="#6600DDFF"
-        custom:cellsHighlightColor="#2600DDFF"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
-
-    </com.shubham.agrawal.sudokusolver.SudokuBoard>
+        custom:letterColor="#000000"
+        custom:letterColorSolve="#00FF00" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -128,5 +130,19 @@
             android:textSize="24sp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/solveButton"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/solve_btn"
+        android:onClick="solve"
+        android:text="@string/solve"
+        android:textSize="18sp"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintHorizontal_bias="0.498"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

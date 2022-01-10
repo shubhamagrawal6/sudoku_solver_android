@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     private SudokuBoard gameBoard;
     private Solver gameBoardSolver;
+    private Button solveBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         gameBoard = findViewById(R.id.SudokuBoard);
         gameBoardSolver = gameBoard.getSolver();
-
+        solveBTN = findViewById(R.id.solveButton);
     }
 
     public void BTNOnePress(View view){
@@ -63,6 +65,32 @@ public class MainActivity extends AppCompatActivity {
     public void BTNNinePress(View view){
         gameBoardSolver.setNumberPos(9);
         gameBoard.invalidate();
+    }
+
+    public void solve(View view){
+        if(solveBTN.getText().toString().equals(getString(R.string.solve))){
+            solveBTN.setText(getString(R.string.clear));
+
+            gameBoardSolver.getEmptyBoxIndexes();
+
+            SolveBoardThread solveBoardThread = new SolveBoardThread();
+            new Thread(solveBoardThread).start();
+
+            gameBoard.invalidate();
+        }
+        else{
+            solveBTN.setText(getString(R.string.solve));
+
+            gameBoardSolver.resetBoard();
+            gameBoard.invalidate();
+        }
+    }
+
+    class SolveBoardThread implements Runnable {
+        @Override
+        public void run() {
+            gameBoardSolver.solve(gameBoard);
+        }
     }
 
 }
